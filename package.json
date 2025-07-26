@@ -1,8 +1,13 @@
 {
   "name": "harmonic-dashboard",
   "version": "1.0.0",
+<<<<<<< HEAD
+  "description": "A modern dashboard integrating GitHub Copilot-powered documentation and chat functionality within a Codespace-optimized environment",
+  "private": true,
+=======
   "description": "A modern dashboard with integrated documentation and chat features powered by Copilot",
   "main": "index.js",
+>>>>>>> main
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,15 +18,57 @@
   },
   "keywords": [
     "dashboard",
+<<<<<<< HEAD
+    "github-copilot",
+    "nextjs",
+    "documentation",
+    "chat"
+=======
     "copilot",
     "documentation",
     "chat",
     "nextjs",
     "react"
+>>>>>>> main
   ],
   "author": "cjo93",
   "license": "MIT",
   "dependencies": {
+<<<<<<< HEAD
+    "@headlessui/react": "^2.2.6",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^24.1.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "autoprefixer": "^10.4.21",
+    "clsx": "^2.1.1",
+    "eslint": "^9.32.0",
+    "eslint-config-next": "^15.4.4",
+    "lucide-react": "^0.525.0",
+    "markdown-it": "^14.1.0",
+    "next": "^15.4.4",
+    "postcss": "^8.5.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "zustand": "^5.0.6"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5"
+  }
+}
+=======
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -48,3 +95,4 @@
     "jest-environment-jsdom": "^29.0.0"
   }
 }
+>>>>>>> main

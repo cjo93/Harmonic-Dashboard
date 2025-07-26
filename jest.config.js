@@ -8,6 +8,17 @@ const createJestConfig = nextJest({
 // Add any custom config to be passed to Jest
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+<<<<<<< HEAD
+  testEnvironment: 'jsdom',
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx,ts,tsx}',
+    '!src/**/*.d.ts',
+    '!src/app/layout.tsx',
+    '!src/app/globals.css',
+=======
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
@@ -18,6 +29,7 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   transformIgnorePatterns: [
     'node_modules/(?!(react-markdown|remark-gfm|micromark|decode-named-character-reference|character-entities|property-information|hast-util-whitespace|space-separated-tokens|comma-separated-tokens|pretty-bytes|bail|unified|trough|vfile|unist|is-plain-obj|remark|mdast|micromark-util|unist-util|zwitch|longest-streak|mdast-util|ccount|escape-string-regexp|markdown-table)/)'
+>>>>>>> main
   ],
 }
 
