@@ -1,0 +1,50 @@
+{
+  "name": "harmonic-dashboard",
+  "version": "1.0.0",
+  "description": "A modern dashboard with integrated documentation and chat features powered by Copilot",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "dashboard",
+    "copilot",
+    "documentation",
+    "chat",
+    "nextjs",
+    "react"
+  ],
+  "author": "cjo93",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.0.0",
+    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "lucide-react": "^0.294.0",
+    "react-markdown": "^9.0.0",
+    "remark-gfm": "^4.0.0",
+    "socket.io-client": "^4.7.0",
+    "zustand": "^4.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "jest": "^29.0.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "jest-environment-jsdom": "^29.0.0"
+  }
+}
