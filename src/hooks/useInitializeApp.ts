@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import { useDashboardStore } from '../lib/store';
+import { useStore } from '../stores/useStore';
 
 export const useInitializeApp = () => {
-  const { addDocumentation, documentation } = useDashboardStore();
+  const { addDocument, documents } = useStore();
 
   useEffect(() => {
     // Only initialize if no documentation exists
-    if (documentation.length === 0) {
-      // Add sample documentation
-      addDocumentation({
+    if (documents.length === 0) {
+      // Add initial documentation
+      addDocument({
         title: 'Getting Started with Harmonic Dashboard',
         content: `# Getting Started
 
@@ -47,7 +47,7 @@ Harmonic Dashboard combines the power of GitHub Copilot with a modern dashboard 
         author: 'Harmonic Dashboard'
       });
 
-      addDocumentation({
+      addDocument({
         title: 'API Reference',
         content: `# API Reference
 
@@ -124,7 +124,7 @@ Retrieve all documentation.
         author: 'System'
       });
 
-      addDocumentation({
+      addDocument({
         title: 'Code Examples',
         content: `# Code Examples
 
@@ -254,7 +254,7 @@ export const useCounterStore = create<CounterState>((set) => ({
         author: 'Development Team'
       });
 
-      addDocumentation({
+      addDocument({
         title: 'Deployment Guide',
         content: `# Deployment Guide
 
@@ -363,5 +363,5 @@ NEXT_PUBLIC_API_URL="https://your-domain.com/api"
         author: 'DevOps Team'
       });
     }
-  }, [addDocumentation, documentation.length]);
+  }, [addDocument, documents.length]);
 };

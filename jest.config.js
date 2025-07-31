@@ -8,7 +8,6 @@ const createJestConfig = nextJest({
 // Add any custom config to be passed to Jest
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-<<<<<<< HEAD
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
@@ -18,20 +17,11 @@ const customJestConfig = {
     '!src/**/*.d.ts',
     '!src/app/layout.tsx',
     '!src/app/globals.css',
-=======
-  moduleNameMapper: {
-    '^@/components/(.*)$': '<rootDir>/src/components/$1',
-    '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
-    '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
-    '^@/types/(.*)$': '<rootDir>/src/types/$1',
-    '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
-  },
-  testEnvironment: 'jest-environment-jsdom',
-  transformIgnorePatterns: [
-    'node_modules/(?!(react-markdown|remark-gfm|micromark|decode-named-character-reference|character-entities|property-information|hast-util-whitespace|space-separated-tokens|comma-separated-tokens|pretty-bytes|bail|unified|trough|vfile|unist|is-plain-obj|remark|mdast|micromark-util|unist-util|zwitch|longest-streak|mdast-util|ccount|escape-string-regexp|markdown-table)/)'
->>>>>>> main
   ],
 }
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+module.exports = createJestConfig(customJestConfig)
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 module.exports = createJestConfig(customJestConfig)

@@ -1,4 +1,5 @@
 import './globals.css'
+import NotificationContainer from '@/components/NotificationContainer'
 
 export const metadata = {
   title: 'Harmonic Dashboard',
@@ -12,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <NotificationContainer />
+      </body>
     </html>
   )
 }

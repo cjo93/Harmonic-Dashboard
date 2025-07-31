@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Search, Plus, FileText, Code, BookOpen, Tag, Calendar, User } from 'lucide-react';
-import { useDashboardStore } from '../lib/store';
+import { useStore } from '../stores/useStore';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 const DocumentationViewer: React.FC = () => {
-  const { documentation, addDocumentation, activeDocSection, setActiveDocSection } = useDashboardStore();
+  const { documents: documentation, addDocument: addDocumentation } = useStore();
+  const [activeDocSection, setActiveDocSection] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
   const [newDoc, setNewDoc] = useState({
@@ -254,7 +255,7 @@ const DocumentationViewer: React.FC = () => {
                     </div>
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-4 h-4" />
-                      <span>{activeDoc.lastUpdated.toLocaleDateString()}</span>
+                      <span>{activeDoc.updatedAt.toLocaleDateString()}</span>
                     </div>
                   </div>
                 </div>

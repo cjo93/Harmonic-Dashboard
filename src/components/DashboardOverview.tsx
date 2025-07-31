@@ -1,9 +1,9 @@
 import React from 'react';
 import { Activity, FileText, MessageSquare, Code, TrendingUp, Users, Clock, GitBranch } from 'lucide-react';
-import { useDashboardStore } from '../lib/store';
+import { useStore } from '../stores/useStore';
 
 const DashboardOverview: React.FC = () => {
-  const { chatMessages, documentation } = useDashboardStore();
+  const { messages: chatMessages, documents: documentation } = useStore();
 
   const stats = [
     {
@@ -22,7 +22,7 @@ const DashboardOverview: React.FC = () => {
     },
     {
       label: 'Code Discussions',
-      value: chatMessages.filter(m => m.metadata?.type === 'code').length,
+      value: chatMessages.filter(m => m.type === 'code').length,
       icon: Code,
       color: 'text-purple-600',
       bgColor: 'bg-purple-100',

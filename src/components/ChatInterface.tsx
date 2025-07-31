@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Code, FileText, Loader2 } from 'lucide-react';
-import { useDashboardStore } from '../lib/store';
+import { useStore } from '../stores/useStore';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 const ChatInterface: React.FC = () => {
-  const { chatMessages, addChatMessage } = useDashboardStore();
+  const { messages: chatMessages, addMessage: addChatMessage } = useStore();
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,8 @@ const ChatInterface: React.FC = () => {
     addChatMessage({
       role: 'user',
       content: userMessage,
-      metadata: { type: 'general' }
+      type: 'general',
+      metadata: { }
     });
 
     setIsLoading(true);
@@ -44,8 +45,8 @@ const ChatInterface: React.FC = () => {
       addChatMessage({
         role: 'assistant',
         content: data.response || 'I\'m here to help you with code documentation and development questions!',
+        type: data.type || 'general',
         metadata: { 
-          type: data.type || 'general',
           codeLanguage: data.codeLanguage,
           references: data.references 
         }
@@ -54,7 +55,8 @@ const ChatInterface: React.FC = () => {
       addChatMessage({
         role: 'assistant',
         content: 'Sorry, I encountered an error. Please try again.',
-        metadata: { type: 'general' }
+        type: 'general',
+        metadata: { }
       });
     } finally {
       setIsLoading(false);
@@ -113,13 +115,13 @@ const ChatInterface: React.FC = () => {
                 <p className="text-sm font-medium text-gray-900">
                   {message.role === 'user' ? 'You' : 'Copilot'}
                 </p>
-                {message.metadata?.type === 'code' && (
+                {message.type === 'code' && (
                   <div className="flex items-center space-x-1 text-xs text-gray-500">
                     <Code className="w-3 h-3" />
-                    <span>{message.metadata.codeLanguage}</span>
+                    <span>{message.metadata?.codeLanguage}</span>
                   </div>
                 )}
-                {message.metadata?.type === 'documentation' && (
+                {message.type === 'documentation' && (
                   <div className="flex items-center space-x-1 text-xs text-gray-500">
                     <FileText className="w-3 h-3" />
                     <span>Documentation</span>

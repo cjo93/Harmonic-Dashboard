@@ -1,51 +1,30 @@
 export interface ChatMessage {
   id: string;
-<<<<<<< HEAD
-  role: 'user' | 'assistant';
-  content: string;
-  timestamp: Date;
-  type?: 'code' | 'documentation' | 'general';
-}
-
-export interface DocumentationItem {
-=======
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: Date;
+  type?: 'code' | 'documentation' | 'general';
   metadata?: {
-    type?: 'code' | 'documentation' | 'general';
     codeLanguage?: string;
     references?: string[];
   };
 }
 
-export interface DocumentationSection {
->>>>>>> main
+export interface DocumentationItem {
   id: string;
   title: string;
   content: string;
   type: 'markdown' | 'code' | 'api';
   tags: string[];
-<<<<<<< HEAD
   createdAt: Date;
   updatedAt: Date;
+  author?: string;
 }
 
 export interface AppState {
   currentPage: 'dashboard' | 'chat' | 'documentation';
   isCodespaceConnected: boolean;
   isCopilotEnabled: boolean;
-=======
-  lastUpdated: Date;
-  author?: string;
-}
-
-export interface DashboardState {
-  isLoading: boolean;
-  currentView: 'dashboard' | 'chat' | 'docs';
-  chatMessages: ChatMessage[];
-  documentation: DocumentationSection[];
-  activeDocSection?: string;
 }
 
 export interface CopilotConfig {
@@ -54,5 +33,36 @@ export interface CopilotConfig {
   temperature: number;
   maxTokens: number;
   systemPrompt?: string;
->>>>>>> main
+}
+
+// Defrag/HiGPT Types
+export interface MirrorState {
+  id: string;
+  type: string;
+  intensity: number;
+  frequency: number;
+}
+
+export interface GearAlignment {
+  id: string;
+  planetaryGear: string;
+  resonanceLevel: number;
+  phase: number;
+}
+
+export interface SymbolicBand {
+  id: string;
+  archetype: string;
+  frequency: number;
+  amplitude: number;
+  phase: number;
+}
+
+export interface HarmonicProfile {
+  msi: number;
+  mirrorStates: MirrorState[];
+  gearAlignments: GearAlignment[];
+  symbolicBands: SymbolicBand[];
+  archetypes: string[];
+  prompts: string[];
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import { FileText, MessageSquare, Home, Settings, BookOpen, Code } from 'lucide-react';
-import { useDashboardStore } from '../lib/store';
+import { useStore } from '../stores/useStore';
 
 const Sidebar: React.FC = () => {
-  const { currentView, setCurrentView } = useDashboardStore();
+  const { currentPage: currentView, setCurrentPage: setCurrentView } = useStore();
 
   const menuItems = [
     { id: 'dashboard', icon: Home, label: 'Dashboard', view: 'dashboard' as const },
     { id: 'chat', icon: MessageSquare, label: 'Copilot Chat', view: 'chat' as const },
-    { id: 'docs', icon: BookOpen, label: 'Documentation', view: 'docs' as const },
+    { id: 'docs', icon: BookOpen, label: 'Documentation', view: 'documentation' as const },
   ];
 
   return (
