@@ -235,33 +235,53 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Built with ❤️ for developers, by developers**
 ```
 
-## Project Structure
+## 📚 Comprehensive Documentation
+
+This project includes extensive documentation covering all aspects of development, deployment, and usage:
+
+### 📖 **[Full Documentation](./docs/README.md)**
+Complete documentation hub with organized guides and references.
+
+### 🔗 **Quick Links**
+- **[Quick Start Guide](./docs/guides/quick-start.md)** - Get up and running in minutes
+- **[API Reference](./docs/api/README.md)** - Complete API documentation
+- **[Component Library](./docs/components/README.md)** - React component documentation
+- **[Architecture Overview](./docs/architecture/README.md)** - System design and architecture
+- **[Development Guide](./docs/guides/development.md)** - Development setup and guidelines
+- **[Deployment Guide](./docs/deployment/README.md)** - Production deployment options
+- **[Contributing Guidelines](./docs/contributing/README.md)** - How to contribute to the project
+- **[Troubleshooting](./docs/guides/troubleshooting.md)** - Common issues and solutions
+
+## 📁 Project Structure
 
 ```
 src/
-├── components/           # React components
-│   ├── Sidebar.tsx      # Navigation sidebar
-│   ├── ChatInterface.tsx # Copilot chat interface
-│   ├── DocumentationViewer.tsx # Documentation management
-│   └── DashboardOverview.tsx # Main dashboard
-├── pages/               # Next.js pages
-│   ├── api/            # API routes
-│   ├── _app.tsx        # App wrapper
-│   └── index.tsx       # Home page
-├── lib/                # Utilities and stores
-│   └── store.ts        # Zustand state management
-├── types/              # TypeScript type definitions
-└── styles/             # Global styles and Tailwind CSS
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   │   ├── chat/          # Chat endpoint
+│   │   └── documentation/ # Documentation CRUD
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/            # React components
+│   ├── layout/           # Layout components
+│   ├── chat/             # Chat functionality
+│   ├── documentation/    # Documentation management
+│   └── ui/               # Reusable UI components
+├── stores/               # Zustand stores
+├── types/                # TypeScript definitions
+├── lib/                  # Utility functions
+└── __tests__/            # Test files
 ```
 
 ## Technology Stack
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Styling**: Tailwind CSS with custom theme
-- **State Management**: Zustand
-- **Icons**: Lucide React
-- **Markdown**: react-markdown with GitHub Flavored Markdown
-- **Development**: ESLint, Prettier, Hot Reload
+- **Frontend**: Next.js 15 with React 19 and TypeScript
+- **State Management**: Zustand for efficient global state
+- **Styling**: Tailwind CSS with custom design system
+- **API**: RESTful endpoints for chat and documentation
+- **Testing**: Jest with React Testing Library
+- **Development**: Codespace-optimized environment
 
 ## Development
 
@@ -278,7 +298,43 @@ src/
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ```
 
-## Contributing
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](./docs/contributing/README.md) for details on:
+
+- Code of conduct
+- Development workflow
+- Coding standards
+- Pull request process
+- Issue guidelines
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- GitHub Copilot for AI-powered assistance
+- Next.js team for the amazing framework
+- Tailwind CSS for beautiful styling
+- The open-source community for inspiration
+
+## 📋 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes and releases.
+
+## 🆘 Support
+
+- 📖 Check the [comprehensive documentation](./docs/README.md)
+- 🐛 Report bugs via [GitHub Issues](https://github.com/cjo93/Harmonic-Dashboard/issues)
+- 💬 Join [GitHub Discussions](https://github.com/cjo93/Harmonic-Dashboard/discussions)
+- 🔧 See [Troubleshooting Guide](./docs/guides/troubleshooting.md) for common issues
 >>>>>>> main
 
 1. Fork the repository
