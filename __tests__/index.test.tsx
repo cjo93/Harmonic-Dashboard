@@ -1,49 +1,52 @@
-import { useDashboardStore } from '../src/lib/store'
+import { useStore } from '../src/stores/useStore'
 
 // Test the Zustand store
-describe('Dashboard Store', () => {
+describe('Store', () => {
   it('should initialize with correct default values', () => {
-    const store = useDashboardStore.getState()
+    const store = useStore.getState()
     
     expect(store.isLoading).toBe(false)
-    expect(store.currentView).toBe('dashboard')
-    expect(store.chatMessages).toEqual([])
-    expect(store.documentation).toEqual([])
-    expect(store.activeDocSection).toBeUndefined()
+    expect(store.currentPage).toBe('dashboard')
+    expect(store.messages).toEqual([])
+    expect(store.documents.length).toBeGreaterThan(0) // Has sample data
+    expect(store.selectedDocument).toBeNull()
   })
 
-  it('should update current view', () => {
-    const { setCurrentView } = useDashboardStore.getState()
+  it('should update current page', () => {
+    const { setCurrentPage } = useStore.getState()
     
-    setCurrentView('chat')
-    expect(useDashboardStore.getState().currentView).toBe('chat')
+    setCurrentPage('chat')
+    expect(useStore.getState().currentPage).toBe('chat')
     
-    setCurrentView('docs')
-    expect(useDashboardStore.getState().currentView).toBe('docs')
+    setCurrentPage('documentation')
+    expect(useStore.getState().currentPage).toBe('documentation')
   })
 
   it('should add chat messages', () => {
-    const { addChatMessage, clearChatMessages } = useDashboardStore.getState()
+    const { addMessage } = useStore.getState()
     
-    // Clear any existing messages
-    clearChatMessages()
+    // Store initial count
+    const initialCount = useStore.getState().messages.length
     
-    addChatMessage({
+    addMessage({
       role: 'user',
       content: 'Test message',
       metadata: { type: 'general' }
     })
     
-    const messages = useDashboardStore.getState().chatMessages
-    expect(messages).toHaveLength(1)
-    expect(messages[0].content).toBe('Test message')
-    expect(messages[0].role).toBe('user')
+    const messages = useStore.getState().messages
+    expect(messages).toHaveLength(initialCount + 1)
+    expect(messages[messages.length - 1].content).toBe('Test message')
+    expect(messages[messages.length - 1].role).toBe('user')
   })
 
   it('should add documentation', () => {
-    const { addDocumentation } = useDashboardStore.getState()
+    const { addDocument } = useStore.getState()
     
-    addDocumentation({
+    // Store initial count
+    const initialCount = useStore.getState().documents.length
+    
+    addDocument({
       title: 'Test Doc',
       content: '# Test Content',
       type: 'markdown',
@@ -51,8 +54,8 @@ describe('Dashboard Store', () => {
       author: 'Test Author'
     })
     
-    const docs = useDashboardStore.getState().documentation
-    expect(docs.length).toBeGreaterThan(0)
+    const docs = useStore.getState().documents
+    expect(docs.length).toBe(initialCount + 1)
     
     const testDoc = docs.find(doc => doc.title === 'Test Doc')
     expect(testDoc).toBeDefined()

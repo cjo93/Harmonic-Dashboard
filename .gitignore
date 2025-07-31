@@ -1,6 +1,5 @@
 # Dependencies
 node_modules/
-<<<<<<< HEAD
 .pnp
 .pnp.js
 
@@ -23,31 +22,10 @@ dist/
 .env.production.local
 
 # Logs
-=======
-/.pnp
-.pnp.js
-
-# Testing
-/coverage
-
-# Next.js
-/.next/
-/out/
-
-# Production
-/build
-
-# Misc
-.DS_Store
-*.pem
-
-# Debug
->>>>>>> main
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-<<<<<<< HEAD
 # Runtime data
 pids
 *.pid
@@ -79,15 +57,10 @@ pids
 .cache
 .parcel-cache
 
-# Next.js build output
-.next
-
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Storybook build outputs
-.out
 .storybook-out
 
 # Temporary folders
@@ -108,9 +81,7 @@ temp/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-=======
-# Local env files
-.env*.local
+Thumbs.db
 
 # Vercel
 .vercel
@@ -118,14 +89,3 @@ ehthumbs.db
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
-
-# Temporary files
-/tmp/
-
-# IDE files
-.vscode/settings.json
-.idea/
-
-# OS files
->>>>>>> main
-Thumbs.db

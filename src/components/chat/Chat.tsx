@@ -195,7 +195,11 @@ What would you like help with today?`
     }
     
     setIsTyping(false)
-    addMessage({ role: 'assistant', content: response, type })
+    addMessage({ 
+      role: 'assistant', 
+      content: response, 
+      metadata: { type } 
+    })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
