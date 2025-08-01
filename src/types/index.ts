@@ -1,14 +1,5 @@
 export interface ChatMessage {
   id: string;
-<<<<<<< HEAD
-  role: 'user' | 'assistant';
-  content: string;
-  timestamp: Date;
-  type?: 'code' | 'documentation' | 'general';
-}
-
-export interface DocumentationItem {
-=======
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: Date;
@@ -19,32 +10,24 @@ export interface DocumentationItem {
   };
 }
 
-export interface DocumentationSection {
->>>>>>> main
+export interface DocumentationItem {
   id: string;
   title: string;
   content: string;
   type: 'markdown' | 'code' | 'api';
   tags: string[];
-<<<<<<< HEAD
   createdAt: Date;
   updatedAt: Date;
+  author?: string;
 }
 
 export interface AppState {
   currentPage: 'dashboard' | 'chat' | 'documentation';
   isCodespaceConnected: boolean;
   isCopilotEnabled: boolean;
-=======
-  lastUpdated: Date;
-  author?: string;
-}
-
-export interface DashboardState {
   isLoading: boolean;
-  currentView: 'dashboard' | 'chat' | 'docs';
   chatMessages: ChatMessage[];
-  documentation: DocumentationSection[];
+  documentation: DocumentationItem[];
   activeDocSection?: string;
 }
 
@@ -54,5 +37,4 @@ export interface CopilotConfig {
   temperature: number;
   maxTokens: number;
   systemPrompt?: string;
->>>>>>> main
 }

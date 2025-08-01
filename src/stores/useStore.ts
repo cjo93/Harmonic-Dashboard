@@ -1,7 +1,13 @@
 import { create } from 'zustand'
-import { ChatMessage, DocumentationItem, AppState } from '@/types'
+import { ChatMessage, DocumentationItem } from '@/types'
 
-interface Store extends AppState {
+interface Store {
+  // App state
+  currentPage: 'dashboard' | 'chat' | 'documentation'
+  isCodespaceConnected: boolean
+  isCopilotEnabled: boolean
+  isLoading: boolean
+
   // Chat state
   messages: ChatMessage[]
   isTyping: boolean
@@ -12,7 +18,7 @@ interface Store extends AppState {
   searchTerm: string
   
   // Actions
-  setCurrentPage: (page: AppState['currentPage']) => void
+  setCurrentPage: (page: Store['currentPage']) => void
   addMessage: (message: Omit<ChatMessage, 'id' | 'timestamp'>) => void
   setIsTyping: (isTyping: boolean) => void
   addDocument: (document: Omit<DocumentationItem, 'id' | 'createdAt' | 'updatedAt'>) => void
@@ -22,6 +28,7 @@ interface Store extends AppState {
   setSearchTerm: (term: string) => void
   setCodespaceConnected: (connected: boolean) => void
   setCopilotEnabled: (enabled: boolean) => void
+  setLoading: (loading: boolean) => void
 }
 
 export const useStore = create<Store>((set, get) => ({
@@ -29,6 +36,7 @@ export const useStore = create<Store>((set, get) => ({
   currentPage: 'dashboard',
   isCodespaceConnected: true,
   isCopilotEnabled: true,
+  isLoading: false,
   messages: [],
   isTyping: false,
   documents: [
@@ -150,4 +158,6 @@ Create a new documentation entry.
   setCodespaceConnected: (connected) => set({ isCodespaceConnected: connected }),
   
   setCopilotEnabled: (enabled) => set({ isCopilotEnabled: enabled }),
+  
+  setLoading: (loading) => set({ isLoading: loading }),
 }))

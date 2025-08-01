@@ -1,6 +1,5 @@
 # Harmonic Dashboard
 
-<<<<<<< HEAD
 A modern, integrated development dashboard that combines GitHub Copilot-powered documentation and chat functionality within a Codespace-optimized environment.
 
 ![Dashboard Overview](https://via.placeholder.com/800x400/0ea5e9/ffffff?text=Harmonic+Dashboard)
@@ -34,7 +33,7 @@ A modern, integrated development dashboard that combines GitHub Copilot-powered 
 
 ## 🛠 Tech Stack
 
-- **Frontend**: Next.js 14 with React 18 and TypeScript
+- **Frontend**: Next.js 15 with React 19 and TypeScript
 - **State Management**: Zustand for efficient global state
 - **Styling**: Tailwind CSS with custom design system
 - **API**: RESTful endpoints for chat and documentation
@@ -105,93 +104,6 @@ POST /api/chat
 {
   "message": "How do I create a React component?",
   "type": "code" | "documentation" | "general"
-=======
-A modern, integrated development dashboard with GitHub Copilot-powered documentation and chat features, designed specifically for Codespace environments.
-
-![Dashboard Screenshot](https://via.placeholder.com/800x400/0ea5e9/ffffff?text=Harmonic+Dashboard)
-
-## Features
-
-### 🤖 Copilot Integration
-- **Interactive Chat**: Direct integration with GitHub Copilot for code assistance and development help
-- **Code Generation**: Get code examples, functions, and snippets on-demand
-- **Documentation Assistance**: AI-powered help for creating and maintaining documentation
-
-### 📚 Documentation Management
-- **Markdown Support**: Full markdown rendering with syntax highlighting
-- **Organized Content**: Tag-based organization and search functionality
-- **Real-time Editing**: Create and edit documentation with live preview
-- **Multiple Types**: Support for code, API, and general documentation
-
-### 🚀 Codespace Optimized
-- **Pre-configured Environment**: Ready-to-use development container
-- **Port Forwarding**: Automatic port management for development servers
-- **GitHub Integration**: Seamless integration with GitHub workflows
-- **Extensions**: Pre-installed VS Code extensions for optimal development
-
-## Quick Start
-
-### Prerequisites
-- GitHub Codespace or compatible development environment
-- Node.js 18+ and npm
-
-### Installation
-
-1. **Clone and Install**
-   ```bash
-   git clone https://github.com/cjo93/Harmonic-Dashboard.git
-   cd Harmonic-Dashboard
-   npm install
-   ```
-
-2. **Development Server**
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-3. **Build for Production**
-   ```bash
-   npm run build
-   npm start
-   ```
-
-### Codespace Setup
-
-1. **Open in Codespace**: Click the "Code" button on GitHub and select "Open with Codespaces"
-2. **Automatic Setup**: The environment will automatically configure with all dependencies
-3. **Start Development**: The dev server will start automatically on port 3000
-
-## Usage
-
-### Chat Interface
-- Navigate to the "Copilot Chat" section
-- Ask questions about code, documentation, or development practices
-- Get code examples and explanations
-- Receive context-aware suggestions
-
-### Documentation Management
-- Create new documentation using the "+" button
-- Support for Markdown, Code snippets, and API documentation
-- Use tags to organize and find content easily
-- Search across all documentation
-
-### Dashboard Overview
-- View activity statistics and recent actions
-- Quick access to common development tasks
-- Monitor Copilot integration status
-
-## API Endpoints
-
-### Chat API
-```
-POST /api/chat
-Content-Type: application/json
-
-{
-  "message": "Your question or request"
->>>>>>> main
-}
 ```
 
 ### Documentation API
@@ -254,33 +166,122 @@ Content-Type: application/json
 }
 ```
 
-## Project Structure
+### Documentation API
+```typescript
+GET    /api/documentation          # List all documents
+POST   /api/documentation          # Create new document
+PUT    /api/documentation          # Update document
+DELETE /api/documentation?id=123   # Delete document
+```
+
+## 🧪 Testing
+
+Run the test suite:
+```bash
+npm test
+```
+
+Run tests in watch mode:
+```bash
+npm run test:watch
+```
+
+## 🏗 Building for Production
+
+```bash
+npm run build
+npm start
+```
+
+## 🎯 Usage Examples
+
+### Starting a Chat Session
+1. Click on "Chat" in the sidebar
+2. Type your development question
+3. Get AI-powered assistance with code examples
+
+### Creating Documentation
+1. Navigate to "Documentation"
+2. Click the "+" button
+3. Add title, content, tags, and type
+4. Save your documentation
+
+### Managing Your Environment
+- Monitor Codespace status in the sidebar
+- Check Copilot connectivity
+- View recent activity on the dashboard
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- GitHub Copilot for AI-powered assistance
+- Next.js team for the amazing framework
+- Tailwind CSS for beautiful styling
+- The open-source community for inspiration
+
+---
+
+**Built with ❤️ for developers, by developers**
+```
+
+## 📚 Comprehensive Documentation
+
+This project includes extensive documentation covering all aspects of development, deployment, and usage:
+
+### 📖 **[Full Documentation](./docs/README.md)**
+Complete documentation hub with organized guides and references.
+
+### 🔗 **Quick Links**
+- **[Quick Start Guide](./docs/guides/quick-start.md)** - Get up and running in minutes
+- **[API Reference](./docs/api/README.md)** - Complete API documentation
+- **[Component Library](./docs/components/README.md)** - React component documentation
+- **[Architecture Overview](./docs/architecture/README.md)** - System design and architecture
+- **[Development Guide](./docs/guides/development.md)** - Development setup and guidelines
+- **[Deployment Guide](./docs/deployment/README.md)** - Production deployment options
+- **[Contributing Guidelines](./docs/contributing/README.md)** - How to contribute to the project
+- **[Troubleshooting](./docs/guides/troubleshooting.md)** - Common issues and solutions
+
+## 📁 Project Structure
 
 ```
 src/
-├── components/           # React components
-│   ├── Sidebar.tsx      # Navigation sidebar
-│   ├── ChatInterface.tsx # Copilot chat interface
-│   ├── DocumentationViewer.tsx # Documentation management
-│   └── DashboardOverview.tsx # Main dashboard
-├── pages/               # Next.js pages
-│   ├── api/            # API routes
-│   ├── _app.tsx        # App wrapper
-│   └── index.tsx       # Home page
-├── lib/                # Utilities and stores
-│   └── store.ts        # Zustand state management
-├── types/              # TypeScript type definitions
-└── styles/             # Global styles and Tailwind CSS
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   │   ├── chat/          # Chat endpoint
+│   │   └── documentation/ # Documentation CRUD
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/            # React components
+│   ├── layout/           # Layout components
+│   ├── chat/             # Chat functionality
+│   ├── documentation/    # Documentation management
+│   └── ui/               # Reusable UI components
+├── stores/               # Zustand stores
+├── types/                # TypeScript definitions
+├── lib/                  # Utility functions
+└── __tests__/            # Test files
 ```
 
 ## Technology Stack
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Styling**: Tailwind CSS with custom theme
-- **State Management**: Zustand
-- **Icons**: Lucide React
-- **Markdown**: react-markdown with GitHub Flavored Markdown
-- **Development**: ESLint, Prettier, Hot Reload
+- **Frontend**: Next.js 15 with React 19 and TypeScript
+- **State Management**: Zustand for efficient global state
+- **Styling**: Tailwind CSS with custom design system
+- **API**: RESTful endpoints for chat and documentation
+- **Testing**: Jest with React Testing Library
+- **Development**: Codespace-optimized environment
 
 ## Development
 
@@ -297,7 +298,43 @@ src/
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ```
 
-## Contributing
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](./docs/contributing/README.md) for details on:
+
+- Code of conduct
+- Development workflow
+- Coding standards
+- Pull request process
+- Issue guidelines
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- GitHub Copilot for AI-powered assistance
+- Next.js team for the amazing framework
+- Tailwind CSS for beautiful styling
+- The open-source community for inspiration
+
+## 📋 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes and releases.
+
+## 🆘 Support
+
+- 📖 Check the [comprehensive documentation](./docs/README.md)
+- 🐛 Report bugs via [GitHub Issues](https://github.com/cjo93/Harmonic-Dashboard/issues)
+- 💬 Join [GitHub Discussions](https://github.com/cjo93/Harmonic-Dashboard/discussions)
+- 🔧 See [Troubleshooting Guide](./docs/guides/troubleshooting.md) for common issues
 >>>>>>> main
 
 1. Fork the repository
