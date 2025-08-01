@@ -28,7 +28,7 @@ const DiagnosticsTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((row, idx) => (
+            {data.map((row) => (
               <tr key={row.category} className="bg-gray-900/60 hover:bg-gold/10 transition">
                 <td className="py-2 font-semibold font-serif">{row.category}</td>
                 <td className="py-2">

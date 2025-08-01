@@ -239,7 +239,7 @@ const PersonalCosmosReport: React.FC<{ data: PersonalCosmosData; userData: UserB
           <div>
             <h4 className="font-serif font-bold text-gold mb-2">Key Strengths</h4>
             <ul className="list-disc list-inside space-y-1 text-sm text-gray-200">
-              {data.synthesis.keyStrengths.map((strength, i) => (
+              {data.synthesis.keyStrengths.map((strength: string, i: number) => (
                 <li key={i}>{strength}</li>
               ))}
             </ul>
@@ -247,7 +247,7 @@ const PersonalCosmosReport: React.FC<{ data: PersonalCosmosData; userData: UserB
           <div>
             <h4 className="font-serif font-bold text-gold mb-2">Growth Areas</h4>
             <ul className="list-disc list-inside space-y-1 text-sm text-gray-200">
-              {data.synthesis.growthAreas.map((area, i) => (
+              {data.synthesis.growthAreas.map((area: string, i: number) => (
                 <li key={i}>{area}</li>
               ))}
             </ul>
