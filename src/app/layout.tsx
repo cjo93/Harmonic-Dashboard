@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Harmonic Dashboard',
-  description: 'A modern dashboard integrating GitHub Copilot-powered documentation and chat functionality',
+  title: 'Defrag Astrology Portal',
+  description: 'Personal astrology defragmentation center for cosmic consciousness alignment and spiritual insights',
 }
 
 export default function RootLayout({
