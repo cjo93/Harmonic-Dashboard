@@ -2,200 +2,231 @@
 
 import { useStore } from '@/stores/useStore'
 import { 
-  MessageCircle, 
-  BookOpen, 
-  Code, 
-  Activity, 
-  Users, 
-  GitBranch,
+  Circle,
+  Shield,
+  Zap,
+  Activity,
   Clock,
-  TrendingUp 
+  TrendingUp,
+  Eye,
+  Cpu,
+  Waves
 } from 'lucide-react'
 
 export default function Dashboard() {
-  const { setCurrentPage, messages, documents, isCodespaceConnected, isCopilotEnabled } = useStore()
+  const { setCurrentPage } = useStore()
 
-  const stats = [
-    {
-      name: 'Chat Messages',
-      value: messages.length.toString(),
-      icon: MessageCircle,
-      color: 'text-blue-600 bg-blue-50',
-      trend: '+12%'
-    },
-    {
-      name: 'Documentation',
-      value: documents.length.toString(),
-      icon: BookOpen,
-      color: 'text-green-600 bg-green-50',
-      trend: '+5%'
-    },
-    {
-      name: 'Active Sessions',
-      value: isCodespaceConnected ? '1' : '0',
-      icon: Activity,
-      color: 'text-purple-600 bg-purple-50',
-      trend: isCodespaceConnected ? 'Online' : 'Offline'
-    },
-    {
-      name: 'Copilot Status',
-      value: isCopilotEnabled ? 'Active' : 'Inactive',
-      icon: Code,
-      color: 'text-orange-600 bg-orange-50',
-      trend: isCopilotEnabled ? 'Enabled' : 'Disabled'
-    }
+  // MSI Index Data
+  const msiMetrics = [
+    { name: 'Harmonic Density', value: 87.3 },
+    { name: 'Orbital Coherence', value: 92.1 },
+    { name: 'Temporal Cluster', value: 74.8 },
+    { name: 'Symbolic Recurrence', value: 81.6 }
   ]
 
-  const recentActivity = [
-    { type: 'chat', message: 'Asked about React components', time: '2 minutes ago' },
-    { type: 'doc', message: 'Updated API Reference', time: '1 hour ago' },
-    { type: 'system', message: 'Codespace connected', time: '3 hours ago' },
-    { type: 'chat', message: 'Generated TypeScript interfaces', time: '5 hours ago' },
+  // Defrag Status Data
+  const defragMetrics = [
+    { name: 'Pattern Fragmentation', value: 32.7, inverse: true },
+    { name: 'Integration Depth', value: 67.3 },
+    { name: 'Signal Clarity', value: 78.9 },
+    { name: 'Noise Reduction', value: 84.2 }
   ]
 
-  const quickActions = [
-    {
-      title: 'Start Chat Session',
-      description: 'Get help with your code using AI assistance',
-      icon: MessageCircle,
-      action: () => setCurrentPage('chat'),
-      color: 'bg-blue-500 hover:bg-blue-600'
-    },
-    {
-      title: 'Create Documentation',
-      description: 'Add new documentation to your project',
-      icon: BookOpen,
-      action: () => setCurrentPage('documentation'),
-      color: 'bg-green-500 hover:bg-green-600'
-    },
-    {
-      title: 'View Code Examples',
-      description: 'Browse existing code snippets and examples',
-      icon: Code,
-      action: () => setCurrentPage('documentation'),
-      color: 'bg-purple-500 hover:bg-purple-600'
-    }
+  const activeDefenses = [
+    { name: 'Quantum Encryption', status: 'Active' },
+    { name: 'Temporal Shields', status: 'Monitoring' },
+    { name: 'Memory Guards', status: 'Active' }
+  ]
+
+  // Harmonic Convergence Data
+  const convergenceMetrics = [
+    { name: 'Resonance Field', value: 78.5 },
+    { name: 'Dimensional Sync', value: 91.2 },
+    { name: 'Frequency Lock', value: 86.7 }
   ]
 
   return (
-    <div className="space-y-6">
-      {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-harmonic-500 to-harmonic-600 rounded-xl p-6 text-white">
-        <h2 className="text-2xl font-bold mb-2">Welcome to Harmonic Dashboard</h2>
-        <p className="text-harmonic-100 mb-4">
-          Your integrated development environment with AI-powered assistance and documentation management.
-        </p>
-        <div className="flex items-center space-x-4 text-sm">
-          <div className="flex items-center">
-            <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-            <span>Codespace Active</span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-            <span>Copilot Ready</span>
+    <div className="min-h-screen bg-void-950 text-astral-100">
+      <div className="space-y-8 p-6">
+        {/* Header Section */}
+        <div className="text-center space-y-4 py-8">
+          <h1 className="text-4xl font-bold text-mystic-400 tracking-wider">
+            Decode the Design. Break the Loop. Return to Signal.
+          </h1>
+          <p className="text-xl text-astral-300 font-medium">
+            The Sacred Rebellion — Built for the Coded Ones
+          </p>
+          <div className="flex justify-center items-center space-x-6 mt-6">
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-mystic-500 rounded-full animate-pulse"></div>
+              <span className="text-sm text-astral-400">HiGPT Active</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-cosmic-500 rounded-full animate-pulse"></div>
+              <span className="text-sm text-astral-400">System Online</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat) => {
-          const Icon = stat.icon
-          return (
-            <div key={stat.name} className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-              <div className="flex items-center justify-between">
+        {/* Main Tiles Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          {/* MSI Index Tile */}
+          <div className="bg-void-900 border border-astral-800 rounded-2xl p-6 hover:border-mystic-600 transition-colors">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <Circle className="w-8 h-8 text-mystic-400" />
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">{stat.name}</p>
-                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                  <p className="text-xs text-gray-500 mt-1">{stat.trend}</p>
-                </div>
-                <div className={`p-3 rounded-lg ${stat.color}`}>
-                  <Icon className="w-6 h-6" />
+                  <h3 className="text-xl font-bold text-mystic-400">MSI Index</h3>
+                  <p className="text-sm text-astral-400">Initiation Protocol</p>
                 </div>
               </div>
+              <div className="text-right">
+                <div className="text-2xl font-bold text-mystic-300">78.5</div>
+                <div className="text-xs text-astral-500">Initiation</div>
+              </div>
             </div>
-          )
-        })}
-      </div>
+            
+            <div className="space-y-4">
+              {msiMetrics.map((metric) => (
+                <div key={metric.name} className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-astral-300">{metric.name}</span>
+                    <span className="text-sm font-medium text-mystic-300">{metric.value}%</span>
+                  </div>
+                  <div className="w-full bg-void-800 rounded-full h-2">
+                    <div 
+                      className="bg-gradient-to-r from-mystic-600 to-mystic-400 h-2 rounded-full transition-all duration-1000"
+                      style={{ width: `${metric.value}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Quick Actions */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-          <div className="space-y-3">
-            {quickActions.map((action, index) => {
-              const Icon = action.icon
-              return (
-                <button
-                  key={index}
-                  onClick={action.action}
-                  className="w-full flex items-center p-4 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors text-left"
-                >
-                  <div className={`p-2 rounded-lg ${action.color} text-white mr-4`}>
-                    <Icon className="w-5 h-5" />
+          {/* Defrag Status Tile */}
+          <div className="bg-void-900 border border-astral-800 rounded-2xl p-6 hover:border-cosmic-600 transition-colors">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <Shield className="w-8 h-8 text-cosmic-400" />
+                <div>
+                  <h3 className="text-xl font-bold text-cosmic-400">Defrag Status</h3>
+                  <p className="text-sm text-astral-400">System Integrity</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-2xl font-bold text-cosmic-300">67.3%</div>
+                <div className="text-xs text-astral-500">Coherence</div>
+              </div>
+            </div>
+            
+            <div className="space-y-4 mb-6">
+              {defragMetrics.map((metric) => (
+                <div key={metric.name} className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-astral-300">{metric.name}</span>
+                    <span className="text-sm font-medium text-cosmic-300">{metric.value}%</span>
                   </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900">{action.title}</h4>
-                    <p className="text-sm text-gray-600">{action.description}</p>
+                  <div className="w-full bg-void-800 rounded-full h-2">
+                    <div 
+                      className={`h-2 rounded-full transition-all duration-1000 ${
+                        metric.inverse 
+                          ? 'bg-gradient-to-r from-red-600 to-red-400' 
+                          : 'bg-gradient-to-r from-cosmic-600 to-cosmic-400'
+                      }`}
+                      style={{ width: `${metric.value}%` }}
+                    ></div>
                   </div>
-                </button>
-              )
-            })}
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-astral-800 pt-4">
+              <h4 className="text-sm font-medium text-astral-300 mb-3">Active Defenses</h4>
+              <div className="space-y-2">
+                {activeDefenses.map((defense) => (
+                  <div key={defense.name} className="flex items-center justify-between">
+                    <span className="text-xs text-astral-400">{defense.name}</span>
+                    <span className={`text-xs px-2 py-1 rounded-full ${
+                      defense.status === 'Active' 
+                        ? 'bg-green-900 text-green-300' 
+                        : 'bg-yellow-900 text-yellow-300'
+                    }`}>
+                      {defense.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Harmonic Convergence Tile */}
+          <div className="bg-void-900 border border-astral-800 rounded-2xl p-6 hover:border-astral-600 transition-colors">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <Waves className="w-8 h-8 text-astral-400" />
+                <div>
+                  <h3 className="text-xl font-bold text-astral-400">Harmonic Convergence</h3>
+                  <p className="text-sm text-astral-400">Quantum Alignment</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-2xl font-bold text-astral-300">78.5%</div>
+                <div className="text-xs text-astral-500">Resonance</div>
+              </div>
+            </div>
+            
+            <div className="space-y-4 mb-6">
+              {convergenceMetrics.map((metric) => (
+                <div key={metric.name} className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-astral-300">{metric.name}</span>
+                    <span className="text-sm font-medium text-astral-300">{metric.value}%</span>
+                  </div>
+                  <div className="w-full bg-void-800 rounded-full h-2">
+                    <div 
+                      className="bg-gradient-to-r from-astral-600 to-astral-400 h-2 rounded-full transition-all duration-1000"
+                      style={{ width: `${metric.value}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-astral-800 pt-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-medium text-astral-300">Aquarian Gate</span>
+                <span className="text-sm text-green-400">Activated</span>
+              </div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-astral-400">Timeline Sync</span>
+                <span className="text-sm text-astral-300">2024.1.15.78</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-astral-400">Next Convergence</span>
+                <span className="text-sm text-astral-300">47:33:12</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Recent Activity */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
-          <div className="space-y-3">
-            {recentActivity.map((activity, index) => (
-              <div key={index} className="flex items-center justify-between py-2">
-                <div className="flex items-center">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${
-                    activity.type === 'chat' ? 'bg-blue-100 text-blue-600' :
-                    activity.type === 'doc' ? 'bg-green-100 text-green-600' :
-                    'bg-gray-100 text-gray-600'
-                  }`}>
-                    {activity.type === 'chat' ? <MessageCircle className="w-4 h-4" /> :
-                     activity.type === 'doc' ? <BookOpen className="w-4 h-4" /> :
-                     <Activity className="w-4 h-4" />}
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">{activity.message}</p>
-                    <p className="text-xs text-gray-500">{activity.time}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* System Status */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">System Status</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-              <span className="text-sm font-medium text-green-900">Development Server</span>
-            </div>
-            <span className="text-xs text-green-600">Running</span>
-          </div>
-          <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-              <span className="text-sm font-medium text-blue-900">API Endpoints</span>
-            </div>
-            <span className="text-xs text-blue-600">Active</span>
-          </div>
-          <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg">
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
-              <span className="text-sm font-medium text-purple-900">Database</span>
-            </div>
-            <span className="text-xs text-purple-600">Connected</span>
-          </div>
+        {/* System Navigation */}
+        <div className="flex justify-center space-x-6 pt-8">
+          <button
+            onClick={() => setCurrentPage('chat')}
+            className="flex items-center space-x-2 px-6 py-3 bg-mystic-900 border border-mystic-700 text-mystic-300 rounded-xl hover:bg-mystic-800 transition-colors"
+          >
+            <Eye className="w-5 h-5" />
+            <span>Neural Interface</span>
+          </button>
+          <button
+            onClick={() => setCurrentPage('documentation')}
+            className="flex items-center space-x-2 px-6 py-3 bg-cosmic-900 border border-cosmic-700 text-cosmic-300 rounded-xl hover:bg-cosmic-800 transition-colors"
+          >
+            <Cpu className="w-5 h-5" />
+            <span>Knowledge Base</span>
+          </button>
         </div>
       </div>
     </div>

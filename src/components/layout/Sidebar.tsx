@@ -13,6 +13,7 @@ import {
 
 export default function Sidebar() {
   const { currentPage, setCurrentPage, isCodespaceConnected, isCopilotEnabled } = useStore()
+  const isDarkTheme = currentPage === 'dashboard'
 
   const navigation = [
     { name: 'Dashboard', page: 'dashboard' as const, icon: Home },
@@ -21,16 +22,36 @@ export default function Sidebar() {
   ]
 
   return (
-    <div className="w-64 bg-white shadow-sm border-r border-gray-200 flex flex-col">
+    <div className={`w-64 shadow-sm border-r flex flex-col ${
+      isDarkTheme 
+        ? 'bg-void-900 border-astral-800' 
+        : 'bg-white border-gray-200'
+    }`}>
       {/* Logo */}
-      <div className="flex items-center px-4 py-6 border-b border-gray-200">
+      <div className={`flex items-center px-4 py-6 border-b ${
+        isDarkTheme 
+          ? 'border-astral-800' 
+          : 'border-gray-200'
+      }`}>
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-harmonic-500 rounded-lg flex items-center justify-center">
+          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+            isDarkTheme 
+              ? 'bg-mystic-600' 
+              : 'bg-harmonic-500'
+          }`}>
             <span className="text-white font-bold text-lg">H</span>
           </div>
           <div>
-            <h1 className="text-lg font-semibold text-gray-900">Harmonic</h1>
-            <p className="text-xs text-gray-500">Dashboard</p>
+            <h1 className={`text-lg font-semibold ${
+              isDarkTheme 
+                ? 'text-astral-100' 
+                : 'text-gray-900'
+            }`}>Harmonic</h1>
+            <p className={`text-xs ${
+              isDarkTheme 
+                ? 'text-astral-400' 
+                : 'text-gray-500'
+            }`}>Dashboard</p>
           </div>
         </div>
       </div>
@@ -46,8 +67,12 @@ export default function Sidebar() {
               className={cn(
                 'w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors',
                 currentPage === item.page
-                  ? 'bg-harmonic-50 text-harmonic-700 border border-harmonic-200'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  ? isDarkTheme
+                    ? 'bg-mystic-900 text-mystic-300 border border-mystic-700'
+                    : 'bg-harmonic-50 text-harmonic-700 border border-harmonic-200'
+                  : isDarkTheme
+                    ? 'text-astral-400 hover:bg-void-800 hover:text-astral-200'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               )}
             >
               <Icon className="w-5 h-5 mr-3" />
@@ -58,12 +83,20 @@ export default function Sidebar() {
       </nav>
 
       {/* Status */}
-      <div className="px-4 py-4 border-t border-gray-200 space-y-3">
+      <div className={`px-4 py-4 border-t space-y-3 ${
+        isDarkTheme 
+          ? 'border-astral-800' 
+          : 'border-gray-200'
+      }`}>
         <div className="flex items-center justify-between">
-          <span className="text-xs text-gray-500">Codespace</span>
+          <span className={`text-xs ${
+            isDarkTheme 
+              ? 'text-astral-400' 
+              : 'text-gray-500'
+          }`}>Codespace</span>
           <div className={cn(
             'flex items-center space-x-1 text-xs',
-            isCodespaceConnected ? 'text-green-600' : 'text-red-600'
+            isCodespaceConnected ? 'text-green-400' : 'text-red-400'
           )}>
             <div className={cn(
               'w-2 h-2 rounded-full',
@@ -74,10 +107,16 @@ export default function Sidebar() {
         </div>
         
         <div className="flex items-center justify-between">
-          <span className="text-xs text-gray-500">Copilot</span>
+          <span className={`text-xs ${
+            isDarkTheme 
+              ? 'text-astral-400' 
+              : 'text-gray-500'
+          }`}>Copilot</span>
           <div className={cn(
             'flex items-center space-x-1 text-xs',
-            isCopilotEnabled ? 'text-blue-600' : 'text-gray-600'
+            isCopilotEnabled 
+              ? isDarkTheme ? 'text-cosmic-400' : 'text-blue-600'
+              : isDarkTheme ? 'text-astral-400' : 'text-gray-600'
           )}>
             <Zap className="w-3 h-3" />
             <span>{isCopilotEnabled ? 'Enabled' : 'Disabled'}</span>
@@ -89,7 +128,11 @@ export default function Sidebar() {
             href="https://github.com/cjo93/Harmonic-Dashboard"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-full px-3 py-2 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+            className={`flex items-center justify-center w-full px-3 py-2 text-xs border rounded-lg transition-colors ${
+              isDarkTheme
+                ? 'text-astral-400 hover:text-astral-200 border-astral-700 hover:bg-void-800'
+                : 'text-gray-600 hover:text-gray-900 border-gray-200 hover:bg-gray-50'
+            }`}
           >
             <Github className="w-4 h-4 mr-2" />
             View on GitHub
