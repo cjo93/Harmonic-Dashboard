@@ -9,6 +9,18 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const currentPage = useStore(state => state.currentPage)
+  
+  // For the dashboard (defrag app), use full screen dark layout
+  if (currentPage === 'dashboard') {
+    return (
+      <div className="min-h-screen bg-defrag-bg">
+        {children}
+      </div>
+    )
+  }
+
+  // For other pages, use the original layout with sidebar
   return (
     <div className="min-h-screen bg-gray-50 flex">
       <Sidebar />

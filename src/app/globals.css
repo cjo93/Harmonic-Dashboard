@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Defrag Dark Theme Base Styles */
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+/* Glyph System for Astrology Application */
+.glyph {
+  font-family: 'Arial Unicode MS', 'Symbol', monospace;
+  font-weight: normal;
+}
+
+.glyph-harmonic::before { content: '♦'; }
+.glyph-orbital::before { content: '⧗'; }
+.glyph-temporal::before { content: '⟡'; }
+.glyph-symbolic::before { content: '⟐'; }
+.glyph-aquarian::before { content: '♒'; }
+.glyph-defrag::before { content: '⟟'; }

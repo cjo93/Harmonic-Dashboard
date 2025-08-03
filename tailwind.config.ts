@@ -6,6 +6,30 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    // Defrag color classes
+    'bg-defrag-bg',
+    'bg-defrag-card',
+    'bg-defrag-border',
+    'text-defrag-text-primary',
+    'text-defrag-text-secondary', 
+    'text-defrag-text-muted',
+    'text-defrag-accent-green',
+    'text-defrag-accent-red',
+    'text-defrag-accent-purple',
+    'text-defrag-accent-blue',
+    'text-defrag-accent-gold',
+    'border-defrag-border',
+    'hover:bg-defrag-border/50',
+    // Glyph classes
+    'glyph',
+    'glyph-harmonic',
+    'glyph-orbital',
+    'glyph-temporal',
+    'glyph-symbolic',
+    'glyph-aquarian',
+    'glyph-defrag',
+  ],
   theme: {
     extend: {
       colors: {
@@ -32,6 +56,20 @@ export default {
           700: '#374151',
           800: '#1f2937',
           900: '#111827',
+        },
+        // Dark theme colors for Defrag astrology application
+        defrag: {
+          bg: '#0a0a0a',
+          card: '#1a1a1a',
+          border: '#2a2a2a',
+          'text-primary': '#ffffff',
+          'text-secondary': '#a0a0a0',
+          'text-muted': '#666666',
+          'accent-green': '#22c55e',
+          'accent-red': '#ef4444',
+          'accent-purple': '#8b5cf6',
+          'accent-blue': '#3b82f6',
+          'accent-gold': '#fbbf24',
         },
       },
       fontFamily: {

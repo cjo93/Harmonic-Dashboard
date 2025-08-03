@@ -1,64 +1,51 @@
 import { render, screen } from '@testing-library/react'
 import Dashboard from '../components/Dashboard'
 
-// Mock the store
-jest.mock('../stores/useStore', () => ({
-  useStore: () => ({
-    setCurrentPage: jest.fn(),
-    messages: [],
-    documents: [
-      {
-        id: '1',
-        title: 'Test Doc',
-        content: 'Test content',
-        type: 'markdown',
-        tags: ['test'],
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-    ],
-    isCodespaceConnected: true,
-    isCopilotEnabled: true,
-  })
-}))
-
 describe('Dashboard', () => {
-  it('renders welcome section', () => {
+  it('renders the defrag astrology header', () => {
     render(<Dashboard />)
     
-    expect(screen.getByText('Welcome to Harmonic Dashboard')).toBeInTheDocument()
-    expect(screen.getByText(/Your integrated development environment/)).toBeInTheDocument()
+    expect(screen.getByText('Decode the Design. Break the Loop. Return to Signal.')).toBeInTheDocument()
+    expect(screen.getByText('The Sacred Rebellion — Built for the Coded Ones')).toBeInTheDocument()
   })
 
-  it('renders stats grid', () => {
+  it('renders all three main tiles', () => {
     render(<Dashboard />)
     
-    expect(screen.getByText('Chat Messages')).toBeInTheDocument()
-    expect(screen.getByText('Documentation')).toBeInTheDocument()
-    expect(screen.getByText('Active Sessions')).toBeInTheDocument()
-    expect(screen.getByText('Copilot Status')).toBeInTheDocument()
+    // MSI Index Tile
+    expect(screen.getAllByText('MSI Index').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('78.5').length).toBeGreaterThan(0)
+    
+    // Defrag Status Tile  
+    expect(screen.getAllByText('Defrag Status').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('67.3%').length).toBeGreaterThan(0)
+    
+    // Harmonic Convergence Tile
+    expect(screen.getAllByText('Harmonic Convergence').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('78.5%').length).toBeGreaterThan(0)
   })
 
-  it('renders quick actions', () => {
+  it('renders astrology-specific content', () => {
     render(<Dashboard />)
     
-    expect(screen.getByText('Start Chat Session')).toBeInTheDocument()
-    expect(screen.getByText('Create Documentation')).toBeInTheDocument()
-    expect(screen.getByText('View Code Examples')).toBeInTheDocument()
+    // Check for astrology-specific terms (using getAllByText due to desktop/mobile duplicates)
+    expect(screen.getAllByText('Harmonic Density').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Orbital Coherence').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Temporal Cluster').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Symbolic Recurrence').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Aquarian Gate Activation').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Active Triggers').length).toBeGreaterThan(0)
   })
 
-  it('renders recent activity', () => {
+  it('renders correct percentage values as specified', () => {
     render(<Dashboard />)
     
-    expect(screen.getByText('Recent Activity')).toBeInTheDocument()
-  })
-
-  it('renders system status', () => {
-    render(<Dashboard />)
-    
-    expect(screen.getByText('System Status')).toBeInTheDocument()
-    expect(screen.getByText('Development Server')).toBeInTheDocument()
-    expect(screen.getByText('API Endpoints')).toBeInTheDocument()
-    expect(screen.getByText('Database')).toBeInTheDocument()
+    // Check specific percentage values from requirements (using getAllByText due to duplicates)
+    expect(screen.getAllByText('82%').length).toBeGreaterThan(0) // Harmonic Density
+    expect(screen.getAllByText('91%').length).toBeGreaterThan(0) // Orbital Coherence
+    expect(screen.getAllByText('73%').length).toBeGreaterThan(0) // Temporal Cluster
+    expect(screen.getAllByText('67%').length).toBeGreaterThan(0) // Symbolic Recurrence
+    expect(screen.getAllByText('32.7%').length).toBeGreaterThan(0) // Fragmentation
+    expect(screen.getAllByText('78.9%').length).toBeGreaterThan(0) // Integration
   })
 })
