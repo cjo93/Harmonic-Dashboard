@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import Dashboard from '../components/Dashboard'
 
-// Mock the store
-jest.mock('../stores/useStore', () => ({
-  useStore: () => ({
+// Mock the enhanced store
+jest.mock('../stores/useEnhancedStore', () => ({
+  useEnhancedStore: () => ({
     setCurrentPage: jest.fn(),
     messages: [],
     documents: [
@@ -17,17 +17,51 @@ jest.mock('../stores/useStore', () => ({
         updatedAt: new Date(),
       }
     ],
+    projects: [],
     isCodespaceConnected: true,
-    isCopilotEnabled: true,
+    isCopilotEnabled: false, // Set to false to match test expectations
+    isGitHubConnected: false,
+    appStats: {
+      totalMessages: 0,
+      totalDocuments: 0,
+      activeProjects: 0,
+      totalProjects: 0,
+      copilotUsage: 0,
+      lastActivity: null
+    },
+    updateStats: jest.fn(),
+    addDocument: jest.fn(),
+    addProject: jest.fn(),
+    logActivity: jest.fn(),
+  })
+}))
+
+// Mock the file processor
+jest.mock('../lib/fileProcessor', () => ({
+  fileProcessor: {
+    processFile: jest.fn(),
+  }
+}))
+
+// Mock the notification store
+jest.mock('../stores/useNotificationStore', () => ({
+  useNotificationStore: () => ({
+    addNotification: jest.fn(),
+    notifications: [],
+    unreadCount: 0,
+    markAsRead: jest.fn(),
+    markAllAsRead: jest.fn(),
+    removeNotification: jest.fn(),
+    clearAll: jest.fn(),
   })
 }))
 
 describe('Dashboard', () => {
-  it('renders welcome section', () => {
+  it('renders dashboard header', () => {
     render(<Dashboard />)
     
-    expect(screen.getByText('Welcome to Harmonic Dashboard')).toBeInTheDocument()
-    expect(screen.getByText(/Your integrated development environment/)).toBeInTheDocument()
+    expect(screen.getByText('Dashboard')).toBeInTheDocument()
+    expect(screen.getByText(/Welcome back! Here's an overview/)).toBeInTheDocument()
   })
 
   it('renders stats grid', () => {
@@ -35,16 +69,18 @@ describe('Dashboard', () => {
     
     expect(screen.getByText('Chat Messages')).toBeInTheDocument()
     expect(screen.getByText('Documentation')).toBeInTheDocument()
-    expect(screen.getByText('Active Sessions')).toBeInTheDocument()
-    expect(screen.getByText('Copilot Status')).toBeInTheDocument()
+    expect(screen.getByText('Active Projects')).toBeInTheDocument()
+    expect(screen.getByText('GitHub Status')).toBeInTheDocument()
   })
 
-  it('renders quick actions', () => {
+  it('renders quick actions section', () => {
     render(<Dashboard />)
     
-    expect(screen.getByText('Start Chat Session')).toBeInTheDocument()
-    expect(screen.getByText('Create Documentation')).toBeInTheDocument()
-    expect(screen.getByText('View Code Examples')).toBeInTheDocument()
+    expect(screen.getByText('Quick Actions')).toBeInTheDocument()
+    expect(screen.getByText('Start Chat')).toBeInTheDocument()
+    expect(screen.getByText('Create Document')).toBeInTheDocument()
+    expect(screen.getByText('New Project')).toBeInTheDocument()
+    expect(screen.getByText('GitHub Setup')).toBeInTheDocument()
   })
 
   it('renders recent activity', () => {
@@ -53,12 +89,10 @@ describe('Dashboard', () => {
     expect(screen.getByText('Recent Activity')).toBeInTheDocument()
   })
 
-  it('renders system status', () => {
+  it('displays system status', () => {
     render(<Dashboard />)
     
-    expect(screen.getByText('System Status')).toBeInTheDocument()
-    expect(screen.getByText('Development Server')).toBeInTheDocument()
-    expect(screen.getByText('API Endpoints')).toBeInTheDocument()
-    expect(screen.getByText('Database')).toBeInTheDocument()
+    expect(screen.getByText('Codespace Active')).toBeInTheDocument()
+    expect(screen.getByText('Copilot Inactive')).toBeInTheDocument()
   })
 })
